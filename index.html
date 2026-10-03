@@ -1488,7 +1488,7 @@ function renderStackedChart(ds){
       responsive:true, maintainAspectRatio:false,
       interaction:{mode:'index', intersect:false},
       plugins:{legend:{display:false}, tooltip:{
-        backgroundColor:'#1e2731', borderColor:'#2a333d', borderWidth:1, titleColor:'#ece8e0', bodyColor:'#ece8e0',
+        backgroundColor:'rgba(30,39,49,0.20)', borderColor:'#2a333d', borderWidth:1, titleColor:'#ece8e0', bodyColor:'#ece8e0',
         callbacks:{label:c=> `${c.dataset.label}: ${fmtEUR.format(c.parsed.y)}`}
       }},
       scales:{
