@@ -288,21 +288,21 @@
 
   /* ---------- Milestone ledger ---------- */
   .ledger{
-    display:flex;
-    gap:0;
-    overflow-x:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(72px, 1fr));
+    row-gap:12px;
     margin:22px 0 6px 0;
     border-top:1px dashed var(--border);
     border-bottom:1px dashed var(--border);
-    padding:14px 0;
+    padding:14px 6px;
   }
   .stamp{
-    flex:1;
-    min-width:118px;
+    min-width:0;
     text-align:center;
-    padding:0 10px;
+    padding:0 4px;
     border-right:1px dashed var(--border-soft);
     position:relative;
+    white-space:nowrap;
   }
   .stamp:last-child{border-right:none;}
   .stamp .amt{
