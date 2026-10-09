@@ -2625,7 +2625,7 @@ function renderStorageWarning(){
    data: everything is loaded from OneDrive after sign-in.
    ===================================================================================== */
 const CLOUD_MODE = location.protocol === 'https:' && window.self === window.top;
-const MS_CLIENT_ID = "";                       // optional: bake the Azure Application (client) ID here
+const MS_CLIENT_ID = "4c924eae-04ab-4fb7-aa8c-243505ec1129";                       // optional: bake the Azure Application (client) ID here
 const MS_AUTHORITY = 'https://login.microsoftonline.com/consumers/oauth2/v2.0';
 const MS_SCOPES = 'openid profile offline_access Files.ReadWrite.AppFolder';
 const CLOUD_PATH = '/me/drive/special/approot:/investeerimisteekond-andmed.json';
@@ -2641,7 +2641,10 @@ function esc(v){ return String(v==null?'':v).replace(/[&<>"]/g, c=>({'&':'&amp;'
 function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
 function lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
 function lsDel(k){ try{ localStorage.removeItem(k); }catch(e){} }
-function cloudClientId(){ return (lsGet(CK.client) || MS_CLIENT_ID || '').trim(); }
+function cloudClientId(){
+  const stored = (lsGet(CK.client) || '').trim();
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(stored) ? stored : MS_CLIENT_ID;
+}
 function cloudRedirectUri(){ return location.origin + location.pathname.replace(/index\.html$/,''); }
 function cloudNavigate(url){ location.assign(url); }
 function b64url(bytes){
